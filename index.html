@@ -6,8 +6,9 @@
     <!-- Link to your custom font file on GitHub -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Vaganza&display=swap">
 
-   <!-- Include the jsPDF library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.debug.js"></script>
+   <!-- Include the html2pdf library -->
+<script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
 
     <!-- Add your custom styles here -->
     <style>
@@ -221,39 +222,35 @@
         <a href="#shop" class="nav-link">Shop</a>
     </nav>
 
-    <div class="product-list">
-        <!-- Product Item 1 -->
-        <div class="product-item" onclick="openModal('Naruto', 'Description for Naruto product.', '₱720')">
-            <input type="checkbox" class="product-checkbox" id="narutoCheckbox" />
-            <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/naruto.jpg');"></div>
-            <div class="product-details">
-                <div class="product-title">Naruto</div>
-            </div>
+    <div id="content" class="product-list">
+    <!-- Product Item 1 -->
+    <div class="product-item" onclick="openModal('Naruto', 'Description for Naruto product.', '₱720')">
+        <input type="checkbox" class="product-checkbox" id="narutoCheckbox" />
+        <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/naruto.jpg');"></div>
+        <div class="product-details">
+            <div class="product-title">Naruto</div>
         </div>
-
-        <!-- Product Item 2 -->
-        <div class="product-item" onclick="openModal('Bleach', 'Description for Bleach product.', '₱740')">
-            <input type="checkbox" class="product-checkbox" id="bleachCheckbox" />
-            <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/bleach.jpg');"></div>
-            <div class="product-details">
-                <div class="product-title">Bleach</div>
-            </div>
-        </div>
-
-        <!-- Product Item 3 -->
-        <div class="product-item" onclick="openModal('Attack on Titan', 'Description for Attack on Titan product.', '₱340')">
-            <input type="checkbox" class="product-checkbox" id="aotCheckbox" />
-            <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/aot.jpg');"></div>
-            <div class="product-details">
-                <div class="product-title">Attack on Titan</div>
-            </div>
-        </div>
-
-      
-
-        <!-- Add more product items as needed -->
-
     </div>
+
+    <!-- Product Item 2 -->
+    <div class="product-item" onclick="openModal('Bleach', 'Description for Bleach product.', '₱740')">
+        <input type="checkbox" class="product-checkbox" id="bleachCheckbox" />
+        <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/bleach.jpg');"></div>
+        <div class="product-details">
+            <div class="product-title">Bleach</div>
+        </div>
+    </div>
+
+    <!-- Product Item 3 -->
+    <div class="product-item" onclick="openModal('Attack on Titan', 'Description for Attack on Titan product.', '₱340')">
+        <input type="checkbox" class="product-checkbox" id="aotCheckbox" />
+        <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/aot.jpg');"></div>
+        <div class="product-details">
+            <div class="product-title">Attack on Titan</div>
+        </div>
+    </div>
+    <!-- Add more product items as needed -->
+</div>
 
    <div class="modal" id="productModal">
         <div class="modal-content">
@@ -368,19 +365,29 @@
             printProductsToPDF(selectedProducts);
         }
 
-        // Function to print products to PDF
-        function printProductsToPDF(products) {
-            const pdfDoc = new jsPDF();
+       // Function to print products to PDF using html2pdf
+function printProductsToPDF(products) {
+    const content = document.getElementById('content'); // Change 'content' to the ID of the element containing your products
 
-            products.forEach((product, index) => {
-                pdfDoc.text(`Product ${index + 1}: ${product.title}`, 10, 10 + index * 20);
-                pdfDoc.text(`Description: ${product.description}`, 10, 20 + index * 20);
-                pdfDoc.text(`Price: ${product.price}`, 10, 30 + index * 20);
-                pdfDoc.text('----------------------', 10, 40 + index * 20);
-            });
+    const options = {
+        margin: 10,
+        filename: 'selected_products.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    };
 
-            pdfDoc.save('selected_products.pdf');
-        }
+    const printableContent = products
+        .map((product, index) => `Product ${index + 1}: ${product.title} - Price: ${product.price}`)
+        .join('<br>');
+
+    // Create a temporary div to hold the printable content
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = printableContent;
+
+    html2pdf(tempDiv, options);
+}
+
     </script>
 </body>
 
