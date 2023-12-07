@@ -7,13 +7,11 @@
     <title>Your Web Shop</title>
 
     <!-- Link to your custom font file on GitHub -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Vaganza&display=swap">
-
-    <!-- Add your custom styles here -->
     <style>
         @font-face {
             font-family: 'ComicVaganza';
             src: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/fonts/Comic%20Vaganza.ttf') format('truetype');
+            /* Add additional formats if needed */
             font-weight: normal;
             font-style: normal;
         }
@@ -90,26 +88,41 @@
             box-shadow: 0 0 20px rgba(135, 206, 250, 0.7); /* Increased shadow on hover */
         }
 
-        .product-images {
+        .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-            padding: 10px;
+            padding: 20px;
         }
 
-        .product-images img {
-            width: calc(33.33% - 20px); /* Three images per row with margin */
+        .item {
+            box-sizing: border-box;
+            width: calc(15.33% - 90px); /* Fixed width with margin */
             margin: 10px;
+            overflow: hidden;
             border-radius: 8px;
+            background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .product-images img {
-                width: calc(100% - 20px); /* One image per row with margin for mobile */
+        @media (max-width: 1440px) {
+            .item {
+                width: calc(30% - 40px); /* Adjust width for mobile view with three items per row */
             }
         }
+
+        .item:hover {
+            transform: scale(1.1);
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
     </style>
 </head>
 
@@ -125,11 +138,24 @@
         <a href="#shop" class="nav-link">Shop</a>
     </nav>
 
-    <div class="product-images">
-        <!-- Product images go here -->
-        <img src="https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/naruto.jpg" alt="Naruto">
-        <img src="https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/bleach.jpg" alt="Bleach">
-        <img src="https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/aot.jpg" alt="Attack on Titan">
+    <div class="container">
+        <!-- Product 1 -->
+        <div class="item">
+            <img src="https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/naruto.jpg" alt="Naruto">
+            <h2>Naruto</h2>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="item">
+            <img src="https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/bleach.jpg" alt="Bleach">
+            <h2>Bleach</h2>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="item">
+            <img src="https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/aot.jpg" alt="Attack on Titan">
+            <h2>Attack on Titan</h2>
+        </div>
     </div>
 
     <script>
