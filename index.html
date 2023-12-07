@@ -11,7 +11,12 @@
 
     <!-- Add your custom styles here -->
     <style>
-        /* ... (Your existing styles) ... */
+        @font-face {
+            font-family: 'ComicVaganza';
+            src: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/fonts/Comic%20Vaganza.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
         body {
             font-family: 'ComicVaganza', sans-serif;
@@ -101,17 +106,17 @@
         }
 
         .product-item {
-    width: 100px; /* Adjusted width */
-    height: 140px; /* Adjusted height */
-    margin: 1px 0 0 1px; /* Adjusted margin to remove space below the image */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
+            width: 100px; /* Adjusted width */
+            height: 140px; /* Adjusted height */
+            margin: 1px; /* Adjusted margin */
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
 
         .product-item:hover {
             transform: scale(1.05);
