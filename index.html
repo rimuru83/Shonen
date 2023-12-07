@@ -100,39 +100,41 @@
             flex-wrap: wrap;
             justify-content: space-around;
             padding: 10px;
-            max-width: 600px; /* Adjusted max-width */
+            max-width: 800px; /* Adjusted max-width */
             margin: 0 auto; /* Center the container */
         }
 
         .product-item {
-            width: 100px; /* Adjusted width */
-            height: 140px; /* Adjusted height */
-            margin: 5px; /* Adjusted margin */
+            width: 180px; /* Adjusted width */
+            height: 240px; /* Adjusted height */
+            margin: 10px; /* Adjusted margin */
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
         }
 
         .product-image {
             width: 100%;
-            height: 100%;
+            height: 85%;
             background-size: cover;
         }
 
         .product-details {
-            padding: 5px;
+            padding: 10px;
+            text-align: center;
         }
 
         .product-title {
-            font-size: 12px; /* Adjusted font size */
+            font-size: 16px; /* Adjusted font size */
             font-weight: bold;
-            margin-bottom: 3px; /* Adjusted margin */
-        }
-
-        .product-description {
-            font-size: 10px; /* Adjusted font size */
+            margin: 0; /* Removed margin */
         }
     </style>
 </head>
@@ -155,7 +157,6 @@
             <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/naruto.jpg');"></div>
             <div class="product-details">
                 <div class="product-title">Naruto</div>
-                <div class="product-description">Description for Naruto product.</div>
             </div>
         </div>
 
@@ -164,7 +165,6 @@
             <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/bleach.jpg');"></div>
             <div class="product-details">
                 <div class="product-title">Bleach</div>
-                <div class="product-description">Description for Bleach product.</div>
             </div>
         </div>
 
@@ -173,7 +173,6 @@
             <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/aot.jpg');"></div>
             <div class="product-details">
                 <div class="product-title">Attack on Titan</div>
-                <div class="product-description">Description for Attack on Titan product.</div>
             </div>
         </div>
 
