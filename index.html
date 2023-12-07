@@ -107,12 +107,8 @@
 
         @media (max-width: 768px) {
             .product-images img {
-                width: 45%; /* Two images per row with margin for mobile */
+                width: calc(100% - 20px); /* One image per row with margin for mobile */
             }
-        }
-
-        .product-images img:hover {
-            transform: scale(1.1);
         }
     </style>
 </head>
@@ -129,12 +125,12 @@
         <a href="#shop" class="nav-link">Shop</a>
     </nav>
 
-    <!-- Product Images Section -->
-    <section class="product-images">
+    <div class="product-images">
+        <!-- Product images go here -->
         <img src="https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/naruto.jpg" alt="Naruto">
         <img src="https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/bleach.jpg" alt="Bleach">
         <img src="https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/aot.jpg" alt="Attack on Titan">
-    </section>
+    </div>
 
     <script>
         const images = [
