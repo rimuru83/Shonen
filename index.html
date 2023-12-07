@@ -1,25 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product List</title>
+    <title>Your Web Shop</title>
+
+    <!-- Link to your custom font file on GitHub -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Vaganza&display=swap">
+
+    <!-- Add your custom styles here -->
     <style>
+        @font-face {
+            font-family: 'ComicVaganza';
+            src: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/fonts/Comic%20Vaganza.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'ComicVaganza', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #f0f0f0; /* Light Gray */
+            color: #333; /* Dark Gray Text Color */
         }
 
         header {
+            position: relative;
             background-color: #29465B;
             padding: 10px;
             text-align: center;
             color: white;
             font-size: 20px;
             font-weight: bold;
+        }
+
+        header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease; /* Add a smooth transition */
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Black with 0.5 transparency */
+            z-index: 1; /* Higher z-index to overlay on top of the image */
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 40px; /* Adjust the font size as needed */
+            font-weight: bold;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+            padding: 10px; /* Adjust the padding as needed */
+            border-radius: 8px; /* Adjust the border radius as needed */
+            z-index: 2; /* Higher z-index to overlay on top of the overlay */
+        }
+
+        nav {
+            background-color: #29465B;
+            padding: 10px;
+            text-align: center;
+            z-index: 0; /* Lower z-index */
+        }
+
+        nav a {
+            font-family: sans-serif; /* Use the default sans-serif font for navigation links */
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #333; /* Border color same as background */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(135, 206, 250, 0.5); /* Sky Blue Emboss effect */
+            transition: box-shadow 0.3s ease; /* Smooth transition for the emboss effect */
+            position: relative;
+            z-index: 2; /* Higher z-index to overlay on top of the overlay */
+        }
+
+        nav a:hover {
+            box-shadow: 0 0 20px rgba(135, 206, 250, 0.7); /* Increased shadow on hover */
         }
 
         .product-list {
@@ -63,41 +136,79 @@
         }
     </style>
 </head>
+
 <body>
+    <header>
+        <img id="coverImage" src="" alt="Your Web Shop Cover">
+        <div class="overlay-text">SHONEN SECTION</div>
+    </header>
 
-<header>Product List</header>
+    <nav>
+        <!-- Navigation links with smooth scroll -->
+        <a href="https://rimuru83.github.io/Tempest-Gallery/" target="_blank">Tempest Feedbacks</a>
+        <a href="#shop" class="nav-link">Shop</a>
+    </nav>
 
-<div class="product-list">
-    <!-- Product Item 1 -->
-    <div class="product-item">
-        <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/naruto.jpg');"></div>
-        <div class="product-details">
-            <div class="product-title">Naruto</div>
-            <div class="product-description">Description for Naruto product.</div>
+    <div class="product-list">
+        <!-- Product Item 1 -->
+        <div class="product-item">
+            <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/naruto.jpg');"></div>
+            <div class="product-details">
+                <div class="product-title">Naruto</div>
+                <div class="product-description">Description for Naruto product.</div>
+            </div>
         </div>
+
+        <!-- Product Item 2 -->
+        <div class="product-item">
+            <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/bleach.jpg');"></div>
+            <div class="product-details">
+                <div class="product-title">Bleach</div>
+                <div class="product-description">Description for Bleach product.</div>
+            </div>
+        </div>
+
+        <!-- Product Item 3 -->
+        <div class="product-item">
+            <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/aot.jpg');"></div>
+            <div class="product-details">
+                <div class="product-title">Attack on Titan</div>
+                <div class="product-description">Description for Attack on Titan product.</div>
+            </div>
+        </div>
+
+        <!-- Add more product items as needed -->
+
     </div>
 
-    <!-- Product Item 2 -->
-    <div class="product-item">
-        <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/bleach.jpg');"></div>
-        <div class="product-details">
-            <div class="product-title">Bleach</div>
-            <div class="product-description">Description for Bleach product.</div>
-        </div>
-    </div>
+    <script>
+        const images = [
+            'https://raw.githubusercontent.com/rimuru83/Shonen/main/COVER/1.jpg',
+            'https://raw.githubusercontent.com/rimuru83/Shonen/main/COVER/2.jpg',
+            'https://raw.githubusercontent.com/rimuru83/Shonen/main/COVER/3.jpg',
+            'https://raw.githubusercontent.com/rimuru83/Shonen/main/COVER/4.jpg',
+            'https://raw.githubusercontent.com/rimuru83/Shonen/main/COVER/5.jpg',
+            'https://raw.githubusercontent.com/rimuru83/Shonen/main/COVER/6.jpg',
+        ];
 
-    <!-- Product Item 3 -->
-    <div class="product-item">
-        <div class="product-image" style="background-image: url('https://raw.githubusercontent.com/rimuru83/Shonen/main/PRODUCTS/images/aot.jpg');"></div>
-        <div class="product-details">
-            <div class="product-title">Attack on Titan</div>
-            <div class="product-description">Description for Attack on Titan product.</div>
-        </div>
-    </div>
+        let currentImageIndex = 0;
+        const coverImage = document.getElementById('coverImage');
 
-    <!-- Add more product items as needed -->
+        function changeImage() {
+            coverImage.style.opacity = 0; // Start fading out
+            setTimeout(() => {
+                coverImage.src = images[currentImageIndex];
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                coverImage.style.opacity = 1; // Start fading in
+            }, 1000); // Wait for the fade-out transition to complete (1s)
+        }
 
-</div>
+        // Change image every 5 seconds (adjust as needed)
+        setInterval(changeImage, 5000);
 
+        // Initial image load
+        changeImage();
+    </script>
 </body>
+
 </html>
